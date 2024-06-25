@@ -7,7 +7,6 @@ import java.util.Optional;
 import java.util.Scanner;
 import java.util.stream.Collectors;
 
-import org.hibernate.annotations.SourceType;
 
 import br.com.rafaelsilveiradev.model.Categoria;
 import br.com.rafaelsilveiradev.model.DadosSerie;
