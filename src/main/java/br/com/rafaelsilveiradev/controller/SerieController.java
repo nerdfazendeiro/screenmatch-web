@@ -3,6 +3,8 @@ package br.com.rafaelsilveiradev.controller;
 import org.springframework.web.bind.annotation.RestController;
 import br.com.rafaelsilveiradev.services.SerieService;
 import br.com.rafaelsilveiradev.dto.SerieDTO;
+import br.com.rafaelsilveiradev.model.Episodio;
+
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,7 +26,7 @@ public class SerieController {
         return servico.obterTodasAsSeries();
     }
 
-    @GetMapping("top5")
+    @GetMapping("/top5")
     public List<SerieDTO> obterTop5Series() {
         return servico.obterTop5Series();
     }
@@ -37,6 +39,21 @@ public class SerieController {
     @GetMapping("/{id}")
     public SerieDTO obterPorId(@PathVariable Long id) {
         return servico.obterPorId(id);
+    }
+    
+    @GetMapping("/{id}/temporadas/todas")
+    public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id) {
+        return servico.obterTodasTemporadas(id);
+    }
+
+    @GetMapping("/{id}/temporadas/{numero}")
+    public List<EpisodioDTO> obterTemporadasPorNumero(@PathVariable Long id, @PathVariable Long numero) {
+        return servico.obterTemporadasPorNumero(id, numero);
+    }
+    
+    @GetMapping("/categoria/{nomeGenero}")
+    public List<SerieDTO> obterSeriesPorCategoria(@PathVariable String nomeGenero) {
+        return servico.obterSeriesPorCategoria(nomeGenero);
     }
     
 }
